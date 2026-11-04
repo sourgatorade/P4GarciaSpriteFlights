@@ -2,22 +2,23 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    float minSize = 0.5f;
-    float maxSize = 2.0f;
+    public float minSize = 0.5f;
+    public float maxSize = 2.0f;
+    public float minSpeed = 50f;
+    public float maxSpeed = 150f;
     Rigidbody2D rb;
-    float minSpeed = 50f;
-    float maxSpeed = 150f;
-    
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         float randomSize = Random.Range(minSize, maxSize);
         transform.localScale = new Vector3 (randomSize, randomSize, 1);
 
-        rb = GetComponent<Rigidbody2D>();
-
         float randomSpeed = Random.Range(minSpeed, maxSpeed);
-        rb.AddForce(Vector2.right * randomSpeed);
+        Vector2 randomDirection = Random.insideUnitCircle;
+
+        rb = GetComponent<Rigidbody2D>();
+        rb.AddForce(randomDirection * randomSpeed);
     }
 
     // Update is called once per frame
