@@ -3,10 +3,14 @@ using UnityEngine.InputSystem;
 
 public class NewMonoBehaviourScript : MonoBehaviour
 {
+    
+    private float elapsedTime = 0f;
+    private float score = 0f;
+    public float scoreMultiplyer = 10f;
     public float thrustForce = 1f;
         Rigidbody2D rb;
-    public GameObject boosterFlame;
-
+    public UIDocument uiDocument;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,18 +20,18 @@ public class NewMonoBehaviourScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if (Mouse.current.leftButton.isPressed) 
-            if (Mouse.current.leftButton.wasPressedThisFrame)
-            {
+        elapsedTime += Time.deltaTime;
+        score = Mathf.FloorToInt(elapsedTime * scoreMultiplyer);
+        Debug.Log("Score: " + score);
 
-            }
-        
-        
+        if (Mouse.current.leftButton.isPressed)
+
+
         {
             // Calculate mouse direction 
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.value);
             Vector2 direction = (mousePos - transform.position).normalized;
-            
+
             // Move player in direction of mouse
             transform.up = direction;
             rb.AddForce(direction * thrustForce);
