@@ -1997,6 +1997,7 @@ MonoBehaviour:
   scoreMultiplyer: 10
   thrustForce: 2
   uiDocument: {fileID: 1277931341}
+  explosionEffect: {fileID: 1022848240111389406, guid: ef80d7f76d6c40f4eabc5603d49e6f87, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
